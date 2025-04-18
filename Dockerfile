@@ -12,12 +12,11 @@ RUN apt-get update && apt-get install -y \
 # Direktori kerja di dalam container
 WORKDIR /app
 
-# Salin package.json dan install dependencies
-COPY package*.json ./
-RUN npm install
-
 # Salin semua file project
 COPY . .
+
+# Install dependencies
+RUN npm install
 
 # Jalankan bot
 CMD ["npm", "start"]
